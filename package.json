@@ -1,0 +1,83 @@
+{
+  "name": "paladium-group",
+  "version": "1.0.13",
+  "description": "Launcher of paladium-pvp.fr",
+  "main": "app/main/main.js",
+  "homepage": "https://paladium-pvp.fr",
+  "author": {
+    "name" : "Dysey",
+    "email" : "dysey@paladium-pvp.fr",
+    "url" : "http://paladium-pvp.fr/"
+  },
+  "scripts": {
+    "start": "electronmon .",
+    "test": "electron .",
+    "buildW": "electron-builder build -w --x64",
+    "buildM": "electron-builder build -m dmg zip pkg --universal",
+    "buildL": "electron-builder build -l deb rpm snap --armv7l",
+    "buildLAppImage": "electron-builder build -l appimage --x64",
+    "buildRPi": "electron-builder build -l deb --armv7l",
+    "buildMintel": "electron-builder build -m dmg zip pkg --x64",
+    "buildMas": "electron-builder build -m dmg zip pkg --arm64"
+  },
+  "dependencies": {
+    "@aws-crypto/crc32": "^2.0.1",
+    "@tryghost/content-api": "^1.8.0",
+    "auto-launch": "^5.0.5",
+    "axios": "^0.26.1",
+    "download": "^8.0.0",
+    "electron-debug": "^3.2.0",
+    "electron-log": "^4.4.6",
+    "electron-store": "^8.0.1",
+    "electron-updater": "^5.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "minecraft-launcher-core": "^3.16.13",
+    "vue": "^3.2.31",
+    "vue-router": "^4.0.14",
+    "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "electron": "^21.3.0",
+    "electron-builder": "^23.6.0",
+    "electronmon": "^2.0.2"
+  },
+  "build": {
+    "appId": "paladium-group",
+    "productName": "Paladium Launcher",
+    "icon": "logo.png",
+    "asar": false,
+    "dmg": {
+      "backgroundColor": "#e0621b",
+      "window": {
+        "width": "400",
+        "height": "300"
+      },
+      "contents": [
+        {
+          "x": 100,
+          "y": 150
+        },
+        {
+          "x": 300,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications/"
+        }
+      ]
+    },
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "allowToChangeInstallationDirectory": true,
+      "oneClick": false
+    },
+    "linux": {
+      "target": "AppImage",
+      "category": "Utility"
+    }
+  }
+}
